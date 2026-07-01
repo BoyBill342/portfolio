@@ -1,22 +1,18 @@
 export const skillGroups = [
   {
     title: 'Programming',
-    items: ['Python', 'JavaScript', 'PowerShell', 'C#'],
-  },
-  {
-    title: 'Tools',
-    items: ['Git', 'GitHub', 'VS Code', 'ADB', 'Fastboot', 'Playwright', 'PyInstaller'],
-  },
-  {
-    title: 'Desktop',
-    items: ['Tkinter'],
-  },
-  {
-    title: 'Automation',
-    items: ['Android'],
+    items: ['Python'],
   },
   {
     title: 'Testing',
-    items: ['Testing'],
+    items: ['Regression Testing', 'System Validation', 'Bug Investigation', 'Log Analysis', 'Test Methodology Design', 'Test Case Authoring'],
   },
+  {
+    title: 'Automation',
+    items: ['Python', 'ADB scripting'],
+  },
+  {
+    title: 'Tools',
+    items: ['ADB', 'Unity', 'VS Code', 'WireShark', 'MobSF', 'TestFlight', 'iperf (TCP/UDP)'],
+  }
 ];

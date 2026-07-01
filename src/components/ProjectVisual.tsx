@@ -4,6 +4,7 @@ const labels: Record<string, string[]> = {
   'vr-shooter': ['Unity Scene', 'Combat Loop', 'Haptics'],
   'command-center': ['ADB', 'Fastboot', 'Logs'],
   'ai-notes': ['Summary', 'Draft', 'Review'],
+  'browser-game': ['PlayCanvas', 'Events', 'AI'],
 };
 
 export function ProjectVisual({ variant }: { variant: string }) {

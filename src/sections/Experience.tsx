@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
 import { experience } from '@/data/experience';
+import { site } from '@/data/site';
 
 export function Experience() {
   return (
@@ -12,6 +13,33 @@ export function Experience() {
           title="A vertical timeline that reads like progress, not paperwork."
           description="The timeline keeps the focus on ownership, growth, and the way the role evolved over time."
         />
+
+        <motion.article
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-10% 0px' }}
+          transition={{ duration: 0.45 }}
+          className="card-surface mt-8 rounded-[28px] p-6 sm:p-7"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400 light:text-slate-500">
+            Profile Snapshot
+          </p>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 light:border-slate-200 light:bg-slate-50">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400 light:text-slate-500">Education</p>
+              <p className="mt-2 text-base font-medium text-white light:text-slate-900">{site.education.degree}</p>
+              <p className="mt-1 text-sm text-slate-300 light:text-slate-600">
+                {site.education.school} · {site.education.location}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 light:border-slate-200 light:bg-slate-50">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-400 light:text-slate-500">Languages</p>
+              <p className="mt-2 text-base font-medium text-white light:text-slate-900">
+                {site.additionalInfo.languages.join(' · ')}
+              </p>
+            </div>
+          </div>
+        </motion.article>
 
         <div className="mt-12 space-y-6">
           {experience.map((item, index) => (

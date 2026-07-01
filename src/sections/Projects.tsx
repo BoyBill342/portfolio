@@ -23,7 +23,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Projects"
           title="Featured case study and supporting work."
-          description="The featured project is intentionally detailed, while the smaller cards show the broader direction of the portfolio without exposing confidential material."
+          description="The featured project shows measurable QA automation impact, while the supporting work highlights game development and interactive system design." 
         />
 
         <motion.div
@@ -103,9 +103,7 @@ export function Projects() {
                 <h3 className="text-xl font-semibold text-white light:text-slate-900">{project.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-300 light:text-slate-600">{project.description}</p>
 
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-400 light:text-slate-500">
-                  Preview card for v1 portfolio
-                </p>
+                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-400 light:text-slate-500">Selected project</p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (

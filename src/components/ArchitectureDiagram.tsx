@@ -7,8 +7,8 @@ export function ArchitectureDiagram() {
     <div className="card-surface overflow-hidden p-5">
       <div className="grid gap-4">
         <div className="grid grid-cols-3 gap-3">
-          <div className={node}>Operator UI</div>
-          <div className={node}>Orchestrator</div>
+          <div className={node}>QA Workflow</div>
+          <div className={node}>Python Scripts</div>
           <div className={node}>Reports</div>
         </div>
         <div className="flex items-center justify-center gap-3 text-xs uppercase tracking-[0.24em] text-slate-400">
@@ -18,18 +18,18 @@ export function ArchitectureDiagram() {
         </div>
         <div className="grid gap-3 md:grid-cols-3">
           <motion.div whileHover={{ y: -3 }} className={node}>
-            Device Control
+            ADB Commands
           </motion.div>
           <motion.div whileHover={{ y: -3 }} className={node}>
             Log Capture
           </motion.div>
           <motion.div whileHover={{ y: -3 }} className={node}>
-            Scenario Playback
+            Data Parsing
           </motion.div>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
-          <div className={node}>Android Device Layer</div>
-          <div className={node}>VR Device Layer</div>
+          <div className={node}>VR Device Validation</div>
+          <div className={node}>Stress-test Reporting</div>
         </div>
       </div>
     </div>

@@ -1,65 +1,56 @@
 export const featuredProject = {
-  title: 'VR Device Automation Platform',
+  title: 'Automation Testing Script',
   badge: 'Featured Project',
   summary:
-    'A modular platform for accelerating VR device validation, repeatable Android device checks, and QA workflow automation.',
+    'Python automation tooling built to streamline repetitive QA workflows, reduce manual ADB work, and accelerate reporting for validation tasks.',
   overview:
-    'The platform centralizes device control, log capture, scenario playback, and quick sanity checks into one operator-friendly workflow.',
+    'A focused automation toolkit that bundles repetitive test steps, parsing, log collection, and report generation into a repeatable QA workflow.',
   problem:
-    'Manual VR QA cycles were slow, error-prone, and difficult to repeat consistently across many Android device states and headset scenarios.',
+    'Stress-test preparation and repeated device commands took too much manual effort, slowing down validation cycles and making results harder to reproduce consistently.',
   solution:
-    'A desktop-first automation console that orchestrates device commands, collects evidence, and reduces the time needed to validate common release paths.',
+    'Built Python scripts that automate data parsing, log collection, and report generation while reducing repetitive ADB command execution for the QA team.',
   architecture:
-    'A layered design separates orchestration, device communication, reporting, and operator controls so the system stays maintainable as test coverage grows.',
+    'The workflow separates command orchestration, artifact capture, data parsing, and reporting so individual steps can evolve without breaking the rest of the toolchain.',
   features: [
-    'Device discovery and session-aware command execution',
-    'Scenario-based test orchestration',
-    'Structured logs and artifact collection',
-    'Quick launch shortcuts for repeatable QA tasks',
-    'Clear operator feedback for pass/fail states',
+    'Automated repetitive QA workflows with Python scripts',
+    'Collected logs and parsed validation data automatically',
+    'Generated reports for stress-test runs with less manual handling',
+    'Reduced repeated ADB command execution through scripting',
+    'Cut report preparation time by approximately 75%',
   ],
   challenges: [
-    'Handling flaky device connectivity without interrupting the operator flow',
-    'Keeping the interface fast while collecting status updates in real time',
-    'Designing the tool to stay generic across Android devices and VR setups',
+    'Normalizing outputs from repeated test runs into a format suitable for reporting',
+    'Keeping automation flexible enough for evolving QA scenarios and device states',
+    'Reducing operator effort without hiding important validation signals',
   ],
   lessons: [
-    'Good QA tooling should remove friction instead of adding more surfaces to manage.',
-    'Automation works best when it complements manual judgment rather than replacing it entirely.',
-    'A consistent architecture makes it easier to add new device scenarios later.',
+    'QA automation is most effective when it targets repetitive friction rather than forcing every test into full automation.',
+    'Well-structured logs and parsing pipelines are as valuable as the automated actions themselves.',
+    'Small workflow improvements compound quickly when they are used every test cycle.',
   ],
   roadmap: [
-    'Add richer device presets and saved workflows',
-    'Expand reporting with searchable history',
-    'Introduce AI-assisted triage suggestions',
+    'Expand scenario coverage for additional validation routines',
+    'Improve report formatting for faster team review',
+    'Add more reusable command wrappers for Android and XR test flows',
   ],
 };
 
 export const projects = [
   {
+    title: 'VIVERSE Browser Game',
+    description:
+      'Placed 4th in an internal VIVERSE Game Competition with JavaScript gameplay systems for coin collection, purchasing, enemy AI, and event triggers.',
+    techStack: ['PlayCanvas', 'JavaScript', 'VIVERSE', 'Game Systems'],
+    imageVariant: 'browser-game',
+    githubUrl: null,
+    demoUrl: null,
+  },
+  {
     title: 'VR Zombie Shooter',
     description:
-      'A Unity-based VR shooter demo focused on interaction feel, scene feedback, and enemy pacing.',
+      'A university award-winning VR project built in C# with player health, animation integration, save and load, particle effects, and VR interaction systems.',
     techStack: ['Unity', 'C#', 'VR', 'Gameplay'],
     imageVariant: 'vr-shooter',
-    githubUrl: null,
-    demoUrl: null,
-  },
-  {
-    title: 'Android QA Command Center',
-    description:
-      'Placeholder concept for a lightweight desktop panel that groups ADB, logs, and fastboot actions.',
-    techStack: ['Python', 'Tkinter', 'ADB', 'Fastboot'],
-    imageVariant: 'command-center',
-    githubUrl: null,
-    demoUrl: null,
-  },
-  {
-    title: 'AI-Assisted Test Notes',
-    description:
-      'Placeholder concept for turning raw QA notes into structured summaries and bug report drafts.',
-    techStack: ['Python', 'AI', 'Automation'],
-    imageVariant: 'ai-notes',
     githubUrl: null,
     demoUrl: null,
   },

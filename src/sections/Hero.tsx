@@ -22,17 +22,17 @@ export function Hero() {
             </h1>
             <p className="mt-5 text-2xl font-medium text-slate-200 sm:text-3xl light:text-slate-700">{site.role}</p>
             <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg light:text-slate-600">{site.intro}</p>
+            <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300 light:text-slate-600">{site.summary}</p>
 
             <div className="mt-6 flex flex-wrap gap-2">
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-300 light:border-slate-200 light:bg-slate-100 light:text-slate-600">
-                VR / XR QA
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-300 light:border-slate-200 light:bg-slate-100 light:text-slate-600">
-                Android Tooling
-              </span>
-              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-300 light:border-slate-200 light:bg-slate-100 light:text-slate-600">
-                AI-assisted Workflow
-              </span>
+              {site.focusAreas.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-300 light:border-slate-200 light:bg-slate-100 light:text-slate-600"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3">
@@ -40,7 +40,7 @@ export function Hero() {
                 View Projects
                 <ArrowRight size={16} />
               </Button>
-              <Button disabled variant="secondary" title="Resume coming soon">
+              <Button href={site.resumeHref} variant="secondary" download>
                 Download Resume
                 <span className="rounded-full bg-white/10 px-2 py-0.5 text-[11px] uppercase tracking-[0.2em] text-slate-200 light:bg-slate-200 light:text-slate-600">
                   {site.resumeLabel}
