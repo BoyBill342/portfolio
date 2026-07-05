@@ -37,21 +37,59 @@ export const featuredProject = {
 
 export const projects = [
   {
-    title: 'VIVERSE Browser Game',
+    title: "God's Will Remains",
     description:
-      'Placed 4th in an internal VIVERSE Game Competition with JavaScript gameplay systems for coin collection, purchasing, enemy AI, and event triggers.',
-    techStack: ['PlayCanvas', 'JavaScript', 'VIVERSE', 'Game Systems'],
-    imageVariant: 'browser-game',
-    githubUrl: null,
-    demoUrl: null,
+      'A Unity VR game with a low-poly visual style, slow pacing, and an interactable environment focused on fighting zombies.',
+    techStack: ['Unity', 'C#', 'VR', 'Low Poly'],
+    imageVariant: 'vr-remains',
+    previewVideoUrl: 'https://www.youtube.com/embed/2Pbreav7fC0',
+    previewPrimaryMedia: 'video',
+    previewImages: [],
+    isWide: true,
+    actions: [
+      {
+        kind: 'github',
+        label: 'GitHub',
+        href: null,
+      },
+    ],
   },
   {
-    title: 'VR Zombie Shooter',
+    title: 'Arcade Mania',
     description:
-      'A university award-winning VR project built in C# with player health, animation integration, save and load, particle effects, and VR interaction systems.',
-    techStack: ['Unity', 'C#', 'VR', 'Gameplay'],
-    imageVariant: 'vr-shooter',
-    githubUrl: null,
-    demoUrl: null,
+      'A retro neon arcade social world built for VIVERSE, where players explore a game hall, play mini-games, and earn coins for rewards. I placed 5th in the competition with this project. A later platform update broke the scripts, so the current build is limited to world exploration.',
+    techStack: ['PlayCanvas', 'JavaScript', 'VIVERSE', 'Mini-games'],
+    imageVariant: 'screenshot-gallery',
+    previewImages: [
+      '/projects/viverse/arcade-lobby.png',
+      '/projects/viverse/arcade-chaser.png',
+      '/projects/viverse/arcade-jackpot.png',
+    ],
+    actions: [
+      {
+        kind: 'play',
+        label: 'Play Now',
+        href: 'https://www.viverse.com/dbCxYzg',
+      },
+    ],
+  },
+  {
+    title: 'Happy Forest Trip',
+    description:
+      'A short VIVERSE demo built in under 5 hours that opens with a cheerful forest mood before pivoting into a horror chase. The pacing shift was the core design hook for turning a lighthearted walk into a hidden scare experience.',
+    techStack: ['PlayCanvas', 'JavaScript', 'VIVERSE', 'Horror Pacing'],
+    imageVariant: 'screenshot-gallery',
+    previewImages: [
+      '/projects/viverse/forest-happy.png',
+      '/projects/viverse/forest-hell.png',
+      '/projects/viverse/forest-entity.png',
+    ],
+    actions: [
+      {
+        kind: 'play',
+        label: 'Play Now',
+        href: 'https://www.viverse.com/myvXTkJ',
+      },
+    ],
   },
 ];

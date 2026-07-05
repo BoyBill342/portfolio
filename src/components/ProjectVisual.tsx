@@ -1,25 +1,120 @@
 import { motion } from 'framer-motion';
 
-const labels: Record<string, string[]> = {
-  'vr-shooter': ['Unity Scene', 'Combat Loop', 'Haptics'],
-  'command-center': ['ADB', 'Fastboot', 'Logs'],
-  'ai-notes': ['Summary', 'Draft', 'Review'],
-  'browser-game': ['PlayCanvas', 'Events', 'AI'],
+type ProjectVisualProps = {
+  variant: string;
+  images?: string[];
+  videoUrl?: string;
+  primaryMedia?: 'video' | 'image';
+  isWide?: boolean;
 };
 
-export function ProjectVisual({ variant }: { variant: string }) {
-  const topLabels = labels[variant] ?? ['Project', 'Preview', 'Mockup'];
+export function ProjectVisual({ variant, images, videoUrl, primaryMedia = 'video', isWide = false }: ProjectVisualProps) {
+  const resolvedVideoUrl = (() => {
+    if (!videoUrl) {
+      return undefined;
+    }
+
+    if (!videoUrl.includes('youtube.com')) {
+      return videoUrl;
+    }
+
+    const separator = videoUrl.includes('?') ? '&' : '?';
+    return `${videoUrl}${separator}rel=0&modestbranding=1&playsinline=1&vq=hd1080`;
+  })();
+
+  const isVrRemains = variant === 'vr-remains';
+  const resolvedImages = images?.map((image) => {
+    if (/^(https?:)?\/\//.test(image)) {
+      return image;
+    }
+
+    return `${import.meta.env.BASE_URL}${image.replace(/^\//, '')}`;
+  });
+
+  if (videoUrl || resolvedImages?.length) {
+    const galleryImages = resolvedImages ?? [];
+    const showVideoAsPrimary = Boolean(videoUrl) && primaryMedia === 'video';
+    const primaryImage = galleryImages[0];
+    const secondaryImages = showVideoAsPrimary ? galleryImages : galleryImages.slice(1);
+    const hasSidePanel = (!showVideoAsPrimary && Boolean(resolvedVideoUrl)) || secondaryImages.length > 0;
+
+    return (
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-3 light:border-slate-200 light:bg-white">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_48%)]" />
+        <div className={`relative grid gap-3 ${hasSidePanel ? (isWide ? 'lg:grid-cols-[1.8fr_0.9fr]' : 'lg:grid-cols-[1.45fr_0.95fr]') : ''}`}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 light:border-slate-200 light:bg-slate-100"
+          >
+            {showVideoAsPrimary ? (
+              <div className={`w-full ${isWide ? 'aspect-video lg:aspect-[16/8.8]' : 'aspect-video'}`}>
+                <iframe
+                  src={resolvedVideoUrl}
+                  title="Project gameplay video"
+                  className="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <img
+                src={primaryImage}
+                alt="Project gameplay preview"
+                className="h-52 w-full object-cover object-center sm:h-60"
+              />
+            )}
+          </motion.div>
+
+          {hasSidePanel ? (
+            <div className="grid grid-cols-2 gap-3 lg:grid-cols-1">
+              {!showVideoAsPrimary && resolvedVideoUrl ? (
+              <motion.div
+                key={resolvedVideoUrl}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 light:border-slate-200 light:bg-slate-100"
+              >
+                <div className="h-24 sm:h-[116px]">
+                  <iframe
+                    src={resolvedVideoUrl}
+                    title="Project gameplay video"
+                    className="h-full w-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                  />
+                </div>
+              </motion.div>
+              ) : null}
+
+              {secondaryImages.map((image, index) => (
+                <motion.div
+                  key={image}
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.05 }}
+                  className="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 light:border-slate-200 light:bg-slate-100"
+                >
+                  <img
+                    src={image}
+                    alt="Additional gameplay preview"
+                    className={isVrRemains ? 'h-24 w-full bg-slate-900 object-contain p-1 sm:h-[116px]' : 'h-24 w-full object-cover object-center sm:h-[116px]'}
+                  />
+                </motion.div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-4 light:border-slate-200 light:bg-white">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.18),transparent_48%)]" />
-      <div className="relative flex items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-3 py-2 light:border-slate-200 light:bg-slate-50">
-        {topLabels.map((label) => (
-          <span key={label} className="text-[10px] font-semibold uppercase tracking-[0.24em] text-slate-300 light:text-slate-500">
-            {label}
-          </span>
-        ))}
-      </div>
 
       <div className="relative mt-4 grid grid-cols-2 gap-3">
         <motion.div

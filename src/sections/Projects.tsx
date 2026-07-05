@@ -1,4 +1,3 @@
-import { Github, ExternalLink } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Container } from '@/components/Container';
 import { SectionHeading } from '@/components/SectionHeading';
@@ -87,7 +86,7 @@ export function Projects() {
           </div>
         </motion.div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-10 grid gap-5 lg:grid-cols-2">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -96,14 +95,18 @@ export function Projects() {
               viewport={{ once: true, margin: '-10% 0px' }}
               transition={{ duration: 0.5, delay: index * 0.05 }}
               whileHover={{ y: -5 }}
-              className="card-surface overflow-hidden p-4 transition-shadow duration-300 hover:shadow-[0_20px_70px_rgba(14,165,233,0.22)]"
+              className={`card-surface overflow-hidden p-4 transition-shadow duration-300 hover:shadow-[0_20px_70px_rgba(14,165,233,0.22)] ${project.isWide ? 'lg:col-span-2 lg:w-full' : ''}`}
             >
-              <ProjectVisual variant={project.imageVariant} />
+              <ProjectVisual
+                variant={project.imageVariant}
+                images={project.previewImages}
+                videoUrl={project.previewVideoUrl}
+                primaryMedia={project.previewPrimaryMedia as 'video' | 'image' | undefined}
+                isWide={project.isWide}
+              />
               <div className="px-2 pb-2 pt-5">
                 <h3 className="text-xl font-semibold text-white light:text-slate-900">{project.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300 light:text-slate-600">{project.description}</p>
-
-                <p className="mt-3 text-xs uppercase tracking-[0.18em] text-slate-400 light:text-slate-500">Selected project</p>
+                <p className="mt-3 min-h-[8.5rem] text-sm leading-7 text-slate-300 light:text-slate-600">{project.description}</p>
 
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.techStack.map((tech) => (
@@ -114,14 +117,11 @@ export function Projects() {
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  <Button href={project.githubUrl ?? '#'} disabled={!project.githubUrl} variant="secondary">
-                    <Github size={16} />
-                    GitHub
-                  </Button>
-                  <Button href={project.demoUrl ?? '#'} disabled={!project.demoUrl} variant="secondary">
-                    <ExternalLink size={16} />
-                    Demo
-                  </Button>
+                  {project.actions.map((action) => (
+                    <Button key={action.kind} href={action.href ?? '#'} disabled={!action.href} variant="secondary">
+                      {action.label}
+                    </Button>
+                  ))}
                 </div>
               </div>
             </motion.article>

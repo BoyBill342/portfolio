@@ -16,8 +16,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <div className="section-badge">Modern Portfolio</div>
-            <h1 className="mt-6 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl light:text-slate-900">
+            <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl light:text-slate-900">
               <span className="gradient-text">{site.name}</span>
             </h1>
             <p className="mt-5 text-2xl font-medium text-slate-200 sm:text-3xl light:text-slate-700">{site.role}</p>
